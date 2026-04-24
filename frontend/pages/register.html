@@ -1,0 +1,85 @@
+<!--
+  register.html
+  -------------
+  Registration form for public users and admins.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | JB Function Capture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/auth.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="page-shell navbar-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark">JB</span>
+        <span class="brand-copy">
+          <span class="brand-name">JB Function Capture</span>
+          <span class="brand-subtitle">Create your event access account</span>
+        </span>
+      </a>
+      <div class="nav-actions">
+        <button class="btn btn-outline theme-toggle" type="button" data-theme-toggle>Dark mode</button>
+        <a class="btn btn-outline" href="/pages/login.html">Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="auth-page page-shell">
+    <section class="auth-card">
+      <div class="auth-header">
+        <span class="eyebrow">New user</span>
+        <h1 class="auth-title">Create your account</h1>
+        <p class="auth-subtitle">
+          Register once to search your photos across school programs, annual days, sports meets, and cultural events.
+        </p>
+      </div>
+      <form class="auth-form" data-auth-form data-mode="register" novalidate>
+        <div class="input-group">
+          <label class="input-label" for="name">Full Name</label>
+          <input class="form-control" type="text" name="name" id="name" data-validate>
+          <div class="field-message"></div>
+        </div>
+        <div class="input-group">
+          <label class="input-label" for="email">Email</label>
+          <input class="form-control" type="email" name="email" id="email" autocomplete="username" data-validate>
+          <div class="field-message"></div>
+        </div>
+        <div class="input-group">
+          <label class="input-label" for="mobile">Mobile</label>
+          <input class="form-control" type="text" name="mobile" id="mobile" maxlength="10" inputmode="numeric" data-validate>
+          <div class="field-message"></div>
+        </div>
+        <div class="input-group">
+          <label class="input-label" for="password">Password</label>
+          <input class="form-control" type="password" name="password" id="password" autocomplete="new-password" data-validate>
+          <div class="field-message"></div>
+        </div>
+        <div class="input-group">
+          <label class="input-label" for="confirmPassword">Confirm Password</label>
+          <input class="form-control" type="password" name="confirmPassword" id="confirmPassword" autocomplete="new-password" data-validate>
+          <div class="field-message"></div>
+        </div>
+        <div class="auth-actions">
+          <button class="btn btn-primary" type="submit">Create Account</button>
+          <span class="form-note">Password must be at least 8 characters long.</span>
+        </div>
+      </form>
+      <div class="auth-divider">Already registered?</div>
+      <div class="auth-footer">
+        <a class="auth-link" href="/pages/login.html">Sign in to your account</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/auth.js"></script>
+</body>
+</html>

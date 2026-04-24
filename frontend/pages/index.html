@@ -1,0 +1,153 @@
+<!--
+  index.html
+  ----------
+  Marketing landing page with hero cards, CTA actions, and onboarding steps.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JB Function Capture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="page-shell navbar-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark">JB</span>
+        <span class="brand-copy">
+          <span class="brand-name">JB Function Capture</span>
+          <span class="brand-subtitle">AI-powered event photo discovery</span>
+        </span>
+      </a>
+      <div class="nav-actions">
+        <button class="btn btn-outline theme-toggle" type="button" data-theme-toggle>Dark mode</button>
+        <a class="btn btn-outline" href="/pages/login.html">Admin Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="page-shell hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">School functions and event albums</span>
+          <h1 class="hero-headline">Find Your <span class="hero-highlight">Moments</span> with AI</h1>
+          <p class="section-copy">
+            JB Function Capture helps schools and event teams upload crowd photos once and let every student, parent,
+            and guest find their pictures using a quick face scan.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="/pages/events.html">Find My Photos</a>
+            <a class="btn btn-outline" href="/pages/login.html">Admin Login</a>
+          </div>
+          <div class="hero-meta">
+            <div class="hero-metric">
+              <strong>15s</strong>
+              <span>Average search flow</span>
+            </div>
+            <div class="hero-metric">
+              <strong>20</strong>
+              <span>Bulk uploads per batch</span>
+            </div>
+            <div class="hero-metric">
+              <strong>AI</strong>
+              <span>Face match powered retrieval</span>
+            </div>
+          </div>
+        </div>
+        <div class="floating-stack" id="hero-cards">
+          <article class="event-card floating-card" data-parallax-card>
+            <div class="sample-photo one"></div>
+            <span class="status-pill">Annual Day</span>
+            <h3>Stage, crowd, award, and portrait photos sorted into one gallery.</h3>
+            <p>Parents and students can scan once and jump straight to their moments.</p>
+          </article>
+          <article class="event-card floating-card" data-parallax-card>
+            <div class="sample-photo two"></div>
+            <span class="status-pill">Sports Meet</span>
+            <h3>Fast uploads for action-heavy group photography.</h3>
+            <p>Event admins see live face counts after each upload completes.</p>
+          </article>
+          <article class="event-card floating-card" data-parallax-card>
+            <div class="sample-photo three"></div>
+            <span class="status-pill">Farewell</span>
+            <h3>Shareable result pages with instant WhatsApp and ZIP downloads.</h3>
+            <p>The gallery stays mobile-friendly from search to download.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell">
+      <div class="page-shell">
+        <div class="page-intro">
+          <span class="eyebrow">How it works</span>
+          <h2 class="section-title">A clean three-step journey for every event guest</h2>
+          <p class="section-copy">
+            The workflow is designed for schools and function coordinators: publish an event, upload the album,
+            and let users retrieve only the photos that match them.
+          </p>
+        </div>
+        <div class="steps-grid">
+          <article class="step-card">
+            <div class="step-icon">01</div>
+            <h3>Choose an event</h3>
+            <p>Users browse an event gallery with cover images, dates, and photo counts before starting a scan.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-icon">02</div>
+            <h3>Capture one face</h3>
+            <p>Use your camera or upload a photo. Live face detection confirms the scan before the match request runs.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-icon">03</div>
+            <h3>Download and share</h3>
+            <p>Matched photos open in a masonry gallery with lightbox previews, ZIP download, and WhatsApp sharing.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="page-shell footer-copy">
+      <span>JB Function Capture</span>
+      <span>Built for school functions, annual days, cultural events, and alumni gatherings.</span>
+    </div>
+  </footer>
+
+  <script src="/assets/js/api.js"></script>
+  <script>
+    /**
+     * Applies a subtle parallax effect to the landing page cards.
+     * @returns {void}
+     */
+    function initHeroParallax() {
+      const cards = Array.from(document.querySelectorAll('[data-parallax-card]'));
+
+      document.addEventListener('mousemove', function onMouseMove(event) {
+        const rotateX = ((event.clientY / window.innerHeight) - 0.5) * -10;
+        const rotateY = ((event.clientX / window.innerWidth) - 0.5) * 14;
+
+        cards.forEach(function updateCard(card, index) {
+          const depth = (index - 1) * 5;
+          card.style.transform = "translateY(" + (-Math.abs(depth)) + "px) rotateX(" + rotateX + "deg) rotateY(" + (rotateY + depth) + "deg)";
+        });
+      });
+
+      document.addEventListener('mouseleave', function resetCards() {
+        cards.forEach(function resetCard(card) {
+          card.style.transform = '';
+        });
+      });
+    }
+
+    initHeroParallax();
+  </script>
+</body>
+</html>

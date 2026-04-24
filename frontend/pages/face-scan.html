@@ -1,0 +1,105 @@
+<!--
+  face-scan.html
+  --------------
+  Face scanning page with camera and upload tabs.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Face Scan | JB Function Capture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/gallery.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/face-api.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="page-shell navbar-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark">JB</span>
+        <span class="brand-copy">
+          <span class="brand-name">JB Function Capture</span>
+          <span class="brand-subtitle">Search photos by face</span>
+        </span>
+      </a>
+      <div class="nav-actions">
+        <button class="btn btn-outline theme-toggle" type="button" data-theme-toggle>Dark mode</button>
+        <a class="btn btn-outline" href="/pages/events.html">Back to Events</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page-shell scan-shell">
+    <section class="page-intro">
+      <span class="eyebrow">Face scan</span>
+      <h1 class="section-title">Find your photos in <span id="scan-event-name">Selected Event</span></h1>
+      <p class="section-copy">
+        Use your camera for a quick live scan or upload a clear photo with one face. The app compares your face descriptor
+        against all indexed faces in the selected event.
+      </p>
+    </section>
+
+    <section class="scan-layout">
+      <article class="panel scan-panel">
+        <div class="scan-tabs">
+          <button class="scan-tab active" type="button" data-scan-tab="camera">Use Camera</button>
+          <button class="scan-tab" type="button" data-scan-tab="upload">Upload Photo</button>
+        </div>
+
+        <div data-scan-panel="camera">
+          <div class="scan-stage">
+            <video class="scan-video" id="camera-video" autoplay muted playsinline></video>
+            <canvas class="scan-overlay" id="camera-overlay"></canvas>
+          </div>
+          <div class="scan-actions">
+            <button class="btn btn-primary" type="button" id="camera-search-btn">Capture and Search</button>
+          </div>
+        </div>
+
+        <div class="hidden" data-scan-panel="upload">
+          <div class="scan-stage" id="upload-zone">
+            <div class="scan-upload-zone" id="upload-placeholder">
+              <div class="stack">
+                <strong>Drop a photo here or click to upload</strong>
+                <span>Use a clear front-facing image with one visible face.</span>
+              </div>
+            </div>
+            <img class="scan-preview-image hidden" id="upload-preview-image" alt="Upload preview">
+            <canvas class="scan-overlay" id="upload-overlay"></canvas>
+            <input class="hidden" type="file" id="upload-input" accept="image/*">
+          </div>
+          <div class="scan-actions">
+            <button class="btn btn-primary" type="button" id="upload-search-btn">Search My Photos</button>
+          </div>
+        </div>
+      </article>
+
+      <aside class="panel scan-side-card">
+        <span class="status-pill">Live detection status</span>
+        <div class="detection-badge" id="scan-status">Awaiting a single clear face.</div>
+        <p class="camera-note">
+          Best results come from well-lit photos with the face centered and unobstructed. If more than one face is detected,
+          the search is blocked until only one face remains in frame.
+        </p>
+        <div class="stack">
+          <h3>What happens next</h3>
+          <p>Your face descriptor is sent to the backend and compared against every indexed face for this event.</p>
+          <p>Any images within the match threshold are shown in a downloadable results gallery.</p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <div class="loading-overlay hidden" id="match-overlay">
+    <div class="face-loader"></div>
+    <p>Matching your photos...</p>
+  </div>
+
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/faceScan.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!--
+  results.html
+  ------------
+  Matched photo gallery with download, share, and lightbox interactions.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Results | JB Function Capture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/gallery.css">
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="page-shell navbar-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark">JB</span>
+        <span class="brand-copy">
+          <span class="brand-name">JB Function Capture</span>
+          <span class="brand-subtitle">Matched results gallery</span>
+        </span>
+      </a>
+      <div class="nav-actions">
+        <button class="btn btn-outline theme-toggle" type="button" data-theme-toggle>Dark mode</button>
+        <a class="btn btn-outline" href="/pages/events.html">Browse Events</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page-shell results-shell">
+    <section class="results-toolbar">
+      <div class="page-intro">
+        <span class="eyebrow">Matched photos</span>
+        <h1 class="section-title" id="results-heading">Found 0 photos of you</h1>
+        <p class="section-copy">
+          Tap any image for a full-size preview. Use the actions to save your photos or share them instantly.
+        </p>
+      </div>
+      <div class="cluster hidden" id="results-actions">
+        <button class="btn btn-primary" type="button" id="download-all-btn">Download All</button>
+        <button class="btn btn-outline" type="button" id="share-all-btn">Share via WhatsApp</button>
+      </div>
+    </section>
+
+    <section class="masonry-grid" id="results-grid"></section>
+
+    <section class="empty-state hidden" id="results-empty">
+      <div class="empty-state-illustration"></div>
+      <h2>No results found</h2>
+      <p>Try another face scan or upload a clearer photo with only one visible face.</p>
+      <button class="btn btn-primary" type="button" id="retry-search-btn">Try Another Scan</button>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-panel">
+      <button class="btn btn-outline lightbox-close" type="button" id="lightbox-close">Close</button>
+      <img class="lightbox-image" id="lightbox-image" alt="Full size matched photo">
+    </div>
+  </div>
+
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/results.js"></script>
+</body>
+</html>
